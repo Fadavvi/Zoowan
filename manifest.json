@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Zoowan",
+  "version": "1.0.16",
+  "description": "Grammarly-style writing assistant powered by your local LLMs (OpenAI- and Anthropic-compatible APIs). Select text in any editable field to rephrase, formalize, informalize, correct or shorten it.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "zoowan@local.grammarly",
+      "strict_min_version": "106.0"
+    }
+  },
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "background": {
+    "scripts": [
+      "actions.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "actions.js",
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

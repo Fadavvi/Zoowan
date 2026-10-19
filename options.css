@@ -1,0 +1,144 @@
+:root {
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --ok: #047857;
+  --err: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --border: #334155;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, .12);
+  width: 100%;
+  max-width: 640px;
+  padding: 28px 32px;
+}
+
+.head { display: flex; gap: 14px; align-items: center; margin-bottom: 22px; }
+.head img { border-radius: 10px; }
+h1 { margin: 0; font-size: 22px; }
+.sub { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+
+h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin: 24px 0 10px;
+}
+
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.radios { flex-direction: column; align-items: flex-start; gap: 8px; }
+.radios label { font-size: 14px; cursor: pointer; }
+
+.hint { color: var(--muted); font-size: 12px; display: block; margin-top: 6px; }
+label.field .hint { margin-top: 6px; }
+
+.field { display: block; font-size: 14px; font-weight: 500; margin-bottom: 14px; }
+
+input[type="text"], input[type="password"], input[type="number"] {
+  width: 100%;
+  margin-top: 6px;
+  padding: 9px 12px;
+  font-size: 14px;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79, 70, 229, .15); }
+
+.model-row { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+.model-row input { flex: 1; margin-top: 0; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+
+.chip, .btn {
+  appearance: none;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 14px;
+  transition: background .12s ease;
+}
+.chip {
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--muted);
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn { border: 1px solid var(--border); background: transparent; color: var(--text); }
+.btn.ghost:hover { background: rgba(79, 70, 229, .08); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.btn.primary:hover { background: var(--accent-hover); }
+
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.status { font-size: 13px; color: var(--muted); flex: 1; min-height: 1em; word-break: break-word; }
+.status.ok { color: var(--ok); }
+.status.err { color: var(--err); }
+
+code { background: rgba(79, 70, 229, .08); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+
+.ignore-row input { flex: 1; width: auto; margin-top: 0; }
+.ignore-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.ignore-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  background: rgba(79, 70, 229, .05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 10px;
+}
+.ignore-item code { flex: 1; overflow-wrap: anywhere; background: transparent; padding: 0; font-size: 12.5px; color: var(--text); }
+.ignore-del {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+  padding: 3px 7px;
+  border-radius: 6px;
+}
+.ignore-del:hover { background: rgba(185, 28, 28, .1); color: var(--err); }

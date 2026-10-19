@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoowan — Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main class="card">
+    <header class="head">
+      <img src="icons/icon-48.png" alt="" width="40" height="40" />
+      <div>
+        <h1>Zoowan</h1>
+        <p class="sub">Grammarly-style assistant for your local LLMs.</p>
+      </div>
+    </header>
+
+    <section>
+      <h2>Provider</h2>
+      <div class="row radios">
+        <label><input type="radio" name="provider" value="openai" checked /> OpenAI-compatible <span class="hint">(LM Studio, Ollama /v1, vLLM, LiteLLM…)</span></label>
+        <label><input type="radio" name="provider" value="anthropic" /> Anthropic-compatible <span class="hint">(/messages endpoint, x-api-key header)</span></label>
+      </div>
+
+      <h2>Server</h2>
+      <label class="field">Base URL
+        <input id="baseUrl" type="text" spellcheck="false" placeholder="http://localhost:1234/v1" />
+        <span class="hint">OpenAI-compatible servers should end in <code>/v1</code>. Anthropic-compatible servers should point at the base that serves <code>/messages</code>.</span>
+      </label>
+      <div class="row presets">
+        <button type="button" class="chip" data-preset="lmstudio">LM Studio (localhost:1234)</button>
+        <button type="button" class="chip" data-preset="ollama">Ollama (localhost:11434)</button>
+      </div>
+
+      <label class="field">API key <span class="hint">(optional for local servers)</span>
+        <input id="apiKey" type="password" spellcheck="false" placeholder="sk-…" />
+      </label>
+
+      <label class="field">Model
+        <div class="model-row">
+          <input id="model" list="modelList" type="text" spellcheck="false" placeholder="e.g. qwen2.5:7b-instruct" />
+          <datalist id="modelList"></datalist>
+          <button type="button" class="btn ghost" id="loadModels">Load models</button>
+        </div>
+      </label>
+
+      <div class="row two-col">
+        <label class="field">Temperature
+          <input id="temperature" type="number" min="0" max="2" step="0.1" value="0.3" />
+          <span class="hint">Lower = more faithful to the original text.</span>
+        </label>
+        <label class="field">Max tokens (response)
+          <input id="maxTokens" type="number" min="16" step="16" value="1024" />
+        </label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ignored URLs</h2>
+      <span class="hint" style="margin-top:0">On these pages Zoowan stays silent — no toolbar, no popup. Changes are saved automatically and apply to open tabs right away.</span>
+      <div class="row ignore-row">
+        <input id="ignoreUrl" type="text" spellcheck="false" placeholder="https://pastebin.com  or  https://docs.google.com/document/d/…" />
+        <button type="button" class="btn ghost" id="addIgnore">Add</button>
+      </div>
+      <ul id="ignoreList" class="ignore-list"></ul>
+    </section>
+
+    <footer class="foot">
+      <button type="button" class="btn ghost" id="testBtn">Test connection</button>
+      <span id="status" class="status"></span>
+      <button type="button" class="btn primary" id="saveBtn">Save settings</button>
+    </footer>
+  </main>
+
+  <script src="options.js"></script>
+</body>
+</html>
