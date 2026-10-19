@@ -1,4 +1,4 @@
-# Zoowan 🪶
+# Zoowan
 
 A Grammarly-style writing assistant for Firefox, powered by **your local LLMs**.
 Works with any **OpenAI-compatible** API (LM Studio, Ollama `/v1`, vLLM, LiteLLM, …) or any **Anthropic-compatible** API (`/messages` endpoint).
